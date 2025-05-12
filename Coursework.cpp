@@ -12,24 +12,32 @@ int BlackRows = {0, 0, 0, 0, 2};
 vector<int> board[5][5];
 
 bool isSafe(int x, int y) {
-	if(y = 1) {
-		int w = 0, b = 0;
-		
-		if(board[x - 1][y] = 0) {
+	if((WhiteRows[x] == 0 && BlackRows[x] == 0) || (WhiteCols[y] == 0 && BlackCals[y] == 0)) {
+		return false;
+	} else if(y == 0 && x != 0) {
+		if(board[y][x-1] == 1) {
+			return false;
+		} else { 
 			return true;
-		} else {
-			for(int i = x - 1; i >= 0; i--) {
-				do { 
-					b++;
-				} while(board[i][y] = 0);
-			}
-			if(b = BlackCals[0] && BlackCals[0] = 0) { 
-				return false;
-			} else { 
-				return true;
-			}
 		}
+	} else if(y > 0) { 
+		if(x - 1 > 0 && board[y][x-1] == 1) {
+			return false;
+		} else if(x - 1 > 0 && board[y][x-1] == 0) { 
+			if(x == 0 && (board[y-1][x] == 1 || board[y-1][x+1] == 1)) {
+				return false;
+			} else if (x == 4 && (board[y-1][x] == 1 || board[y-1][x-1] == 1)){ 
+				return false;
+			} else if (x != 0 && x != 4 && (board[y-1][x-1] == 1 || board[y-1][x+1] == 1)) {
+				return false;
+			}
+		} else {
+			return true;
+		}
+		
 	}
+	return true;
+}
 	if(y > 0) {
 		switch x:
 			case 1:
