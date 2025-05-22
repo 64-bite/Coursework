@@ -10,7 +10,7 @@ bool PuzzleSolver::solve(int shipIndex) {
     utils.setBarrierRows(placement);
     utils.setBarrierCols(placement);
     bool success = placement.board.placeShips(shipIndex);
-    utils.removeBarrier(placement);
+    utils.removeBarrier();
     if (success && placement.checkRowsAndCols()) {
         return true;
     }
