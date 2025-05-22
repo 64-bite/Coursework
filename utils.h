@@ -1,4 +1,4 @@
-#ifndef UTILS_H
+#ifndef UTILS_H 
 #define UTILS_H
 
 #include "board.h"
@@ -8,9 +8,11 @@ enum BarrierNum { SIX = 6, SEVEN = 7, EIGHT = 8, ZERO = 0 };
 
 class Utils {
 public:
+    Board b;
     void setBarrierRows(ShipsPlacement& placement);
     void setBarrierCols(ShipsPlacement& placement);
-    void removeBarrier(ShipsPlacement& placement);
+    void removeBarrier();
 };
 
 #endif
+
