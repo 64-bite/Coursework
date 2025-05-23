@@ -1,5 +1,17 @@
-﻿#include "board.h"
-
+#include "board.h"
+ /*----------------------------------------------------------------<Header>-
+ Name: board.h
+ Title: Японський кросворд з човнами
+ Group: ТВ-43
+ Student: Матвієнко
+ Written: 2025-05-22
+ Revised: 2025-05-23
+ Description: Файл який реалізує методи по роботі з човнами 
+ ------------------------------------------------------------------</Header>-*/
+ /* ---------------------------------------------------------------------[<]-
+ Function: canPlaceRow()
+ Synopsis: Перевірка, чи можна поставити човен певного розміру в рядок
+ ---------------------------------------------------------------------[>]-*/
 bool Board::canPlaceRow(int col, int row, int ship) {
     if (row + ship > board_size) return false;
     for (int i = 0; i < ship; i++) {
@@ -11,33 +23,39 @@ bool Board::canPlaceRow(int col, int row, int ship) {
                 int nx = x + dx;
                 int ny = y + dy;
                 if (nx >= 0 && nx < board_size && ny >= 0 && ny < board_size) {
-                    if (board[ny][nx] == SHIP) return false;
+                    if (board[ny][nx] == SHIP || board[ny][nx] == BARRIER) return false;
                 }
             }
         }
     }
     return true;
 }
-
+ /* ---------------------------------------------------------------------[<]-
+ Function: canPlaceCol()
+ Synopsis: Перевірка, чи можна поставити човен певного розміру в стовпчику
+ ---------------------------------------------------------------------[>]-*/
 bool Board::canPlaceCol(int col, int row, int ship) {
     if (col + ship > board_size) return false;
-    for (int i = 0; i < ship; ++i) {
+    for (int i = 0; i < ship; i++) {
         int x = row;
         int y = col + i;
         if (board[y][x] != EMPTY) return false;
-        for (int dx = -1; dx <= 1; ++dx) {
-            for (int dy = -1; dy <= 1; ++dy) {
+        for (int dx = -1; dx <= 1; dx++) {
+            for (int dy = -1; dy <= 1; dy++) {
                 int nx = x + dx;
                 int ny = y + dy;
                 if (nx >= 0 && nx < board_size && ny >= 0 && ny < board_size) {
-                    if (board[ny][nx] == SHIP) return false;
+                    if (board[ny][nx] == SHIP  || board[ny][nx] == BARRIER) return false;
                 }
             }
         }
     }
     return true;
 }
-
+ /* ---------------------------------------------------------------------[<]-
+ Function: putShip()
+ Synopsis: Метод, який ставить човен на дошку
+ ---------------------------------------------------------------------[>]-*/
 void Board::putShip(int col, int row, int ship, bool horizontal) {
     for (int i = 0; i < ship; i++) {
         if (horizontal) {
@@ -47,7 +65,10 @@ void Board::putShip(int col, int row, int ship, bool horizontal) {
         }
     }
 }
-
+ /* ---------------------------------------------------------------------[<]-
+ Function: removeShip()
+ Synopsis: Метод, який видаляє човен з дошки
+ ---------------------------------------------------------------------[>]-*/
 void Board::removeShip(int col, int row, int ship, bool horizontal) {
     for (int i = 0; i < ship; i++) {
         if (horizontal) {
@@ -57,12 +78,15 @@ void Board::removeShip(int col, int row, int ship, bool horizontal) {
         }
     }
 }
-
+ /* ---------------------------------------------------------------------[<]-
+ Function: placeShips()
+ Synopsis: Метод, який виставляє човни на дошку
+ ---------------------------------------------------------------------[>]-*/
 bool Board::placeShips(int shipIndex) {
-    if (shipIndex >= ships_size) return true;
+    if (shipIndex > ships_size) return false;
     int len = ships[shipIndex];
-    for (int i = 0; i < board_size; ++i) {
-        for (int j = 0; j < board_size; ++j) {
+    for (int i = 0; i < board_size; i++) {
+        for (int j = 0; j < board_size; j++) {
             if (canPlaceRow(i, j, len)) {
                 putShip(i, j, len, true);
                 if (placeShips(shipIndex + 1)) return true;
