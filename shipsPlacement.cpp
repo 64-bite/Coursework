@@ -72,6 +72,7 @@ bool ShipsPlacement::checkRows() {
 			rows[i] = true;
 		} else { 
 			rows[i] = false;
+			return false;
 		}
 	}
     return true;
@@ -92,6 +93,7 @@ bool ShipsPlacement::checkCols() {
 			cols[i] = true;
 		} else { 
 			cols[i] = false;
+			return false;
 		}
 	}
 	return true;
