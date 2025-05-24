@@ -99,5 +99,5 @@ bool Board::placeShips(int shipIndex) {
             }
         }
     }
-    return false;
+    return true;
 }
