@@ -60,8 +60,8 @@ void PuzzleSolver::printConsoleFile(const string& filename) {
         cout << placement.white_cols[i] << "  ";
 		out << placement.white_cols[i] << "  ";
         for (int j = 0; j < board_size; j++) {
-            cout << placement.board.board[j][i] << ' ';
-			out << placement.board.board[j][i] << ' ';
+            cout << placement.board.board[i][j] << ' ';
+			out << placement.board.board[i][j] << ' ';
         }
         cout << placement.black_cols[i] << '\n';
 		out << placement.black_cols[i] << '\n';
