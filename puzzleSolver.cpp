@@ -79,4 +79,5 @@ void PuzzleSolver::printConsoleFile(const string& filename) {
     out << "   ";
     for (int i = 0; i < board_size; ++i) out << placement.black_rows[i] << ' ';
     out << '\n';
+    out.close();
 }
