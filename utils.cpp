@@ -14,8 +14,8 @@
  Synopsis: Метод, по виставленню бар'єрів в рядку
  ---------------------------------------------------------------------[>]-*/
 void Utils::setBarrierRows(ShipsPlacement& placement) {
-    for (int i = 0; i < board_size; i++) {
-        for (int j = 0; j < board_size; j++) {
+    for (int i = 0; i < g_board_size; i++) {
+        for (int j = 0; j < g_board_size; j++) {
             if (placement.white_rows[i] == ZERO && placement.black_rows[i] == ZERO) {
                 board.board[i][j] = BARRIER;
             }
@@ -40,8 +40,8 @@ void Utils::setBarrierRows(ShipsPlacement& placement) {
  Synopsis: Метод, по виставленню бар'єрів в стовпчику
  ---------------------------------------------------------------------[>]-*/
 void Utils::setBarrierCols(ShipsPlacement& placement) {
-    for (int i = 0; i < board_size; i++) {
-        for (int j = 0; j < board_size; j++) {
+    for (int i = 0; i < g_board_size; i++) {
+        for (int j = 0; j < g_board_size; j++) {
             if (placement.white_cols[i] == ZERO && placement.black_cols[i] == ZERO) {
                 board.board[j][i] = BARRIER;
             }
@@ -66,13 +66,7 @@ void Utils::setBarrierCols(ShipsPlacement& placement) {
  Synopsis: Метод, по видаленню бар'єрів
  ---------------------------------------------------------------------[>]-*/
 void Utils::removeBarrier() {	
-	for(int i = 0; i < board_size; i++) {
-		for(int j = 0; j < board_size; j++) {
-			std::cout << board.board[j][i] << ' ';
-		}
-		std::cout << '\n';
-	}
-    for (int i = 0; i < board_size; i++) {
+    for (int i = 0; i < g_board_size; i++) {
         for (int j = 0; j < board_size; j++) {
             if (board.board[i][j] == BARRIER) {
                 board.board[i][j] = EMPTY;
