@@ -16,7 +16,7 @@
  ---------------------------------------------------------------------[>]-*/
 ShipsPlacement::ShipsPlacement(const std::vector<int>& wrows, const std::vector<int>& brows, 
                                const std::vector<int>& wcols, const std::vector<int>& bcols) {
-    for (int i = 0; i < board_size; i++) {
+    for (int i = 0; i < g_board_size; i++) {
         white_rows[i] = wrows[i];
         black_rows[i] = brows[i];
         white_cols[i] = wcols[i];
@@ -32,7 +32,7 @@ ShipsPlacement::ShipsPlacement() {
     int br[board_size] = {3, 0, 4, 0, 2, 0, 0, 0, 0};
     int wc[board_size] = {3, 8, 3, 4, 6, 6, 4, 8, 2};
     int bc[board_size] = {2, 0, 0, 0, 0, 0, 0, 0, 3};
-    for (int i = 0; i < board_size; i++) {
+    for (int i = 0; i < g_board_size; i++) {
         white_rows[i] = wr[i];
         black_rows[i] = br[i];
         white_cols[i] = wc[i];
@@ -45,7 +45,7 @@ ShipsPlacement::ShipsPlacement() {
  ---------------------------------------------------------------------[>]-*/
 int ShipsPlacement::longest(int index, bool horizontal, bool occupied) {
     int count = 0, result = 0;
-    for (int i = 0; i < board_size; i++) {
+    for (int i = 0; i < g_board_size; i++) {
         int value = horizontal ? board.board[index][i] : board.board[i][index];
         if ((occupied && value == SHIP) || (!occupied && value == EMPTY)) {
             count++;
@@ -61,7 +61,7 @@ int ShipsPlacement::longest(int index, bool horizontal, bool occupied) {
  Synopsis: Метод, по перевірці умов рядків
  ---------------------------------------------------------------------[>]-*/
 bool ShipsPlacement::checkRows() {
-    for(int i = 0; i < board_size; i++) {
+    for(int i = 0; i < g_board_size; i++) {
 		if(longest(true,i,false) == 9 && white_cols[i] == 0 && black_cols[i] == 0) {
 			rows[i] = true;
 		} else if(white_cols[i] == 0 && longest(true,i,true) == black_cols[i]) {
@@ -82,7 +82,7 @@ bool ShipsPlacement::checkRows() {
  Synopsis: Метод, по перевірці умов стовпців
  ---------------------------------------------------------------------[>]-*/
 bool ShipsPlacement::checkCols() {
-	for(int i = 0; i < board_size; i++) {	
+	for(int i = 0; i < g_board_size; i++) {	
 		if(longest(false,i,false) == 9 && white_rows[i] == 0 && black_rows[i] == 0) {
 			cols[i] = true;
 		} else if(white_rows[i] == 0 && longest(false,i,true) == black_rows[i]) {
