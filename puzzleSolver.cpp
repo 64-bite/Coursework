@@ -50,16 +50,16 @@ void PuzzleSolver::printConsoleFile(const string& filename) {
 	cout << "Вирішенна головоломка: \n";
 	cout << "   ";
     out << "   ";
-    for (int i = 0; i < board_size; ++i) {
+    for (int i = 0; i < g_board_size; ++i) {
 		cout << placement.white_rows[i] << ' ';
 		out << placement.white_rows[i] << ' ';
 	}
     cout << '\n';
 	out << '\n';
-    for (int i = 0; i < board_size; i++) {
+    for (int i = 0; i < g_board_size; i++) {
         cout << placement.white_cols[i] << "  ";
 		out << placement.white_cols[i] << "  ";
-        for (int j = 0; j < board_size; j++) {
+        for (int j = 0; j < g_board_size; j++) {
             cout << placement.board.board[i][j] << ' ';
 			out << placement.board.board[i][j] << ' ';
         }
@@ -68,7 +68,7 @@ void PuzzleSolver::printConsoleFile(const string& filename) {
     }
 	cout << "   ";
     out << "   ";
-    for (int i = 0; i < board_size; ++i) {
+    for (int i = 0; i < g_board_size; ++i) {
 		cout << placement.black_rows[i] << ' ';
 		out << placement.black_rows[i] << ' ';
 	}
