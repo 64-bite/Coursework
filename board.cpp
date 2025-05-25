@@ -13,7 +13,7 @@
  Synopsis: Перевірка, чи можна поставити човен певного розміру в рядок
  ---------------------------------------------------------------------[>]-*/
 bool Board::canPlaceRow(int col, int row, int ship) {
-    if (row + ship > board_size) return false;
+    if (row + ship >g_board_size) return false;
     for (int i = 0; i < ship; i++) {
         int x = row + i;
         int y = col;
@@ -22,7 +22,7 @@ bool Board::canPlaceRow(int col, int row, int ship) {
             for (int dy = -1; dy <= 1; dy++) {
                 int nx = x + dx;
                 int ny = y + dy;
-                if (nx >= 0 && nx < board_size && ny >= 0 && ny < board_size) {
+                if (nx >= 0 && nx < g_board_size && ny >= 0 && ny < g_board_size) {
                     if (board[ny][nx] == SHIP || board[ny][nx] == BARRIER) return false;
                 }
             }
@@ -35,7 +35,7 @@ bool Board::canPlaceRow(int col, int row, int ship) {
  Synopsis: Перевірка, чи можна поставити човен певного розміру в стовпчику
  ---------------------------------------------------------------------[>]-*/
 bool Board::canPlaceCol(int col, int row, int ship) {
-    if (col + ship > board_size) return false;
+    if (col + ship > g_board_size) return false;
     for (int i = 0; i < ship; i++) {
         int x = row;
         int y = col + i;
@@ -44,7 +44,7 @@ bool Board::canPlaceCol(int col, int row, int ship) {
             for (int dy = -1; dy <= 1; dy++) {
                 int nx = x + dx;
                 int ny = y + dy;
-                if (nx >= 0 && nx < board_size && ny >= 0 && ny < board_size) {
+                if (nx >= 0 && nx < g_board_size && ny >= 0 && ny < g_board_size) {
                     if (board[ny][nx] == SHIP  || board[ny][nx] == BARRIER) return false;
                 }
             }
@@ -83,10 +83,10 @@ void Board::removeShip(int col, int row, int ship, bool horizontal) {
  Synopsis: Метод, який виставляє човни на дошку
  ---------------------------------------------------------------------[>]-*/
 bool Board::placeShips(int shipIndex) {
-    if (shipIndex > ships_size) return false;
+    if (shipIndex > g_ships_size) return false;
     int len = ships[shipIndex];
-    for (int i = 0; i < board_size; i++) {
-        for (int j = 0; j < board_size; j++) {
+    for (int i = 0; i < g_board_size; i++) {
+        for (int j = 0; j < g_board_size; j++) {
             if (canPlaceRow(i, j, len)) {
                 putShip(i, j, len, true);
                 if (placeShips(shipIndex + 1)) return true;
