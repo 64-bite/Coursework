@@ -16,8 +16,8 @@ enum CellState { EMPTY = 0, SHIP = 1, BARRIER = 2 };//Константні зм�
 
 class Board {
 public:
-	int board[board_size][board_size] = {{0}};//дошка
-    int ships[ships_size] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};//човни
+	int board[g_board_size][g_board_size] = {{0}};//дошка
+    int ships[g_ships_size] = {4, 3, 3, 2, 2, 2, 1, 1, 1, 1};//човни
 public:
     bool canPlaceRow(int col, int row, int ship);
     bool canPlaceCol(int col, int row, int ship);
