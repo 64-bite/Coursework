@@ -14,7 +14,8 @@
  ------------------------------------------------------------------</Header>-*/
 class ShipsPlacement {
 public:
-	bool rows[board_size] = {false};//поле, по зберіганню відповідності дошки до умов по рядкам 
+/*Задіяти rows, cols в коді*/
+    bool rows[board_size] = {false};//поле, по зберіганню відповідності дошки до умов по рядкам 
     bool cols[board_size] = {false};//поле, по зберіганню відповідності дошки до умов по стовпцям
 	int white_rows[board_size];//Умова для білих стовпців
     int black_rows[board_size];//Умова для чорних стовпців
