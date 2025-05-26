@@ -16,6 +16,7 @@ using namespace std;
   /* ---------------------------------------------------------------------[<]-
  Function: readInput()
  Synopsis: Функція зчитування з консолі
+ TODO: додати перевірки, користувацького вводу
  ---------------------------------------------------------------------[>]-*/
 vector<int> readInput(const string& message, int count) {
     vector<int> result(count);
