@@ -1,6 +1,7 @@
 #include "board.h"
  /*----------------------------------------------------------------<Header>-
- Name: board.h
+ Name: board.cpp
+ 
  Title: Японський кросворд з човнами
  Group: ТВ-43
  Student: Матвієнко
