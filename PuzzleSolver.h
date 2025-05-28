@@ -1,5 +1,7 @@
 #ifndef PUZZLE_SOLVER_H
 #define PUZZLE_SOLVER_H
+#include <iostream>
+#include <fstream>
 #include <string>
 #include "shipsPlacement.h"
 #include "utils.h"
@@ -25,3 +27,4 @@ public:
 };
 
 #endif
+
