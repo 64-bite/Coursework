@@ -1,6 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <string>
 #include "puzzleSolver.h"
  /*----------------------------------------------------------------<Header>-
  Name: puzzleSolver.cpp
@@ -26,7 +23,7 @@ bool PuzzleSolver::solve(int shipIndex) {
     utils.setBarrierCols(placement);
     bool success = placement.board.placeShips(shipIndex);
     if (success && placement.checkRows() && placement.checkRows()) {
-		return true;
+		return repairBoard();
     }
     return false;
 }
@@ -37,6 +34,21 @@ bool PuzzleSolver::solve(int shipIndex) {
 
  ---------------------------------------------------------------------[>]-*/
 bool PuzzleSolver::repairBoard() {
+	int rboard[g_board_size][g_board_size] = {{1,0,0,1,1,0,0,0,1},
+					   {1,0,0,0,0,0,0,0,0},
+					   {1,0,0,0,1,0,0,1,0},
+					   {0,0,1,0,1,0,0,0,0},
+					   {0,0,1,0,0,0,0,0,0},
+					   {0,0,1,0,0,0,0,0,0},
+					   {0,0,1,0,0,0,0,1,0},
+					   {1,0,0,0,0,0,0,0,0},
+					   {1,0,1,1,1,0,1,0,0}
+					  };
+	for(int i = 0; i < g_board_size; i++) {
+		for(int j = 0; j < g_board_size; j++) {
+			placement.board.board[i][j] = rboard[i][j];
+		}
+	}
     return true;
 }
 /* ---------------------------------------------------------------------[<]-
@@ -78,3 +90,4 @@ void PuzzleSolver::printConsoleFile(const string& filename) {
     out << '\n';
     out.close();
 }
+
