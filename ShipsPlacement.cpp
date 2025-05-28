@@ -1,4 +1,3 @@
-#include <algorithm>
 #include "shipsPlacement.h"
 
 /*----------------------------------------------------------------<Header>-
@@ -28,10 +27,10 @@ ShipsPlacement::ShipsPlacement(const std::vector<int>& wrows, const std::vector<
  Synopsis: Конструктор, який ініціалізує умови введені в програмі
  ---------------------------------------------------------------------[>]-*/
 ShipsPlacement::ShipsPlacement() {
-    int wr[board_size] = {4, 0, 3, 7, 4, 0, 8, 3, 8};
-    int br[board_size] = {3, 0, 4, 0, 2, 0, 0, 0, 0};
-    int wc[board_size] = {3, 8, 3, 4, 6, 6, 4, 8, 2};
-    int bc[board_size] = {2, 0, 0, 0, 0, 0, 0, 0, 3};
+    int wr[g_board_size] = {4, 0, 3, 7, 4, 0, 8, 3, 8};
+    int br[g_board_size] = {3, 0, 4, 0, 2, 0, 0, 0, 0};
+    int wc[g_board_size] = {3, 8, 3, 4, 6, 6, 4, 8, 2};
+    int bc[g_board_size] = {2, 0, 0, 0, 0, 0, 0, 0, 3};
     for (int i = 0; i < g_board_size; i++) {
         white_rows[i] = wr[i];
         black_rows[i] = br[i];
@@ -72,7 +71,6 @@ bool ShipsPlacement::checkRows() {
 			rows[i] = true;
 		} else { 
 			rows[i] = false;
-			return false;
 		}
 	}
     return true;
@@ -93,8 +91,8 @@ bool ShipsPlacement::checkCols() {
 			cols[i] = true;
 		} else { 
 			cols[i] = false;
-			return false;
 		}
 	}
 	return true;
 }
+
