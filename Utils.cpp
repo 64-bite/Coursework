@@ -68,11 +68,12 @@ void Utils::setBarrierCols(ShipsPlacement& placement) {
  ---------------------------------------------------------------------[>]-*/
 void Utils::removeBarrier() {	
     for (int i = 0; i < g_board_size; i++) {
-        for (int j = 0; j < board_size; j++) {
+        for (int j = 0; j < g_board_size; j++) {
             if (board.board[i][j] == BARRIER) {
                 board.board[i][j] = EMPTY;
             }
         }
     }
 }
+
 
