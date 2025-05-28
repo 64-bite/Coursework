@@ -102,3 +102,4 @@ bool Board::placeShips(int shipIndex) {
     }
     return true;
 }
+
